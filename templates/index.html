@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Заголовок страницы</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="max-w-5xl mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 xl:max-w-6xl">
+  <header class="py-16 sm:text-center shadow rounded  py-2 ">
+    <!— Шапка сайта —>
+      <h1 class="text-3xl font-bold">
+        Мой блог
+      </h1>
+      <p class="text-lg text-slate-700 dark:text-slate-400 mb-4 mt-2">
+        Теги web,html
+
+      </p>
+      <form action="/subscriptions" method="post" class="">
+        <div class="mb-2 group relative">
+          <input
+            class="caret-pink-500 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username" type="text" placeholder="Почта">
+          <input type="submit" value="Подписаться"
+            class="ml-4 bg-sky-500 flex-auto shadow text-white rounded-md text-sm px-3 py-2 ">
+        </div>
+      </form>
+  </header>
+  <main class="space-y-16 mt-4">
+    <article class="relative flex flex-col max-w-3xl lg:ml-auto xl:max-w-none xl:w-[50rem]">
+      <h3 class="mb-4 text-xl text-slate-900 tracking-tight font-bold dark:text-slate-200">Test Art</h3>
+      <div class="mb-6 prose prose-slate dark:prose-dark">
+        <p class="">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis architecto ipsum tempora, placeat quis porro
+          temporibus iste recusandae eveniet, rem iusto eius nostrum repellat incidunt ea odio omnis inventore
+          voluptatibus.
+        </p>
+      </div>
+      <div class="mt-auto flex flex-row-reverse items-center justify-end">
+        <dl>
+          <dt class="sr-only">Date</dt>
+          <dd
+            class="text-sm leading-6 dark:text-slate-400 lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:whitespace-nowrap">
+            <time datetime="2022-02-24T12:00:00.000Z">Febuary 24, 2022</time></dd>
+        </dl><svg width="2" height="2" fill="currentColor" class="mx-4 text-slate-700 lg:hidden">
+          <circle cx="1" cy="1" r="1"></circle>
+        </svg><a
+          class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white dark:focus:ring-slate-500"
+          href="/blog/headless-ui-v1-5">Read more<span class="sr-only">, Headless UI v1.5: The One With
+            Comboboxes</span><svg
+            class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400 dark:text-slate-500 dark:group-hover:text-slate-400"
+            width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 0L3 3L0 6"></path>
+          </svg></a>
+      </div>
+    </article>
+    <!— Основное содержимое страницы —>
+  </main>
+  <footer class="main-footer">
+    <!— Подвал сайта —>
+  </footer>
+</body>
+
+</html>
