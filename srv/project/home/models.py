@@ -61,7 +61,7 @@ class BlogPageModel(Page):
 
 class BlogPage(BlogPageModel):
 
-    parent_page_types = ["wagtail_code_blog.BlogIndexPage"]
+    parent_page_types = ["home.HomePage"]
 
     template = 'page/article.html'
 
