@@ -9,7 +9,9 @@
             <div class="text-sm leading-6"><dl><dt class="sr-only">Дата</dt><dd class="absolute top-0 inset-x-0 text-slate-700 dark:text-slate-400"><time datetime="2022-02-24T12:00:00.000Z">Thursday, February 24, 2022</time></dd></dl></div>
         </header>
         <main class=" rounded overflow-hidden shadow-lg p-4  flex flex-col gap-1 bg-gray-100 font-sans text-lg text-gray-900 ">
-            <p data-block-key="ndrxk">{{ page.content }}</p></main>
+            {% for block in page.body %}
+            {% include_block block %}
+            {% endfor %}         
     </article>
 </main>
 
