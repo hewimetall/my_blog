@@ -4,6 +4,7 @@ from uuid import uuid4
 SECRET_KEY = os.getenv("SECRET_KEY",str(uuid4()))
 docker- = os.getenv("SECRET_KEY",str(uuid4()))
 
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_DB', 'pgdb'),
@@ -11,6 +12,7 @@ docker- = os.getenv("SECRET_KEY",str(uuid4()))
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'irk'),
         'HOST': os.environ.get('POSTGRES_NAME', 'localhost'),
     },
+}
 
 # SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = ["*"]
