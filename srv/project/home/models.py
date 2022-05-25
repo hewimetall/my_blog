@@ -9,9 +9,6 @@ from wagtail.images.models import Image
 
 from wagtail.search import index
 
-class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey('home.BlogPage', related_name='tagged_items')
-
 
 
 class HomePage(Page):
@@ -63,7 +60,6 @@ class BlogPageModel(Page):
 
 
 class BlogPage(BlogPageModel):
-    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
 
     parent_page_types = ["wagtail_code_blog.BlogIndexPage"]
 
