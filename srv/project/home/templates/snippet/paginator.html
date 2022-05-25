@@ -1,0 +1,26 @@
+{# Only show pagination if there is more than one page to click through #}
+{% if posts.paginator.num_pages > 1 %}
+<div class="container flex justify-center mx-auto">
+    <ul class="flex">
+        <li><a href="?page={{ posts.previous_page_number }}"
+                class="h-10 px-5 text-gray-600 bg-white border border-r-0 p-1 border-gray-600 hover:bg-gray-100">Prev</a>
+        </li>
+        <li><a class="h-10 px-5 text-gray-600 bg-white border border-r-0 p-1 border-gray-600 ">1</a>
+        </li>
+        <li><a class="h-10 px-5 text-gray-600 bg-white border border-r-0 p-1 border-gray-600 hover:bg-gray-100">2</a>
+        </li>
+        <li><a class="h-10 px-5 text-white bg-gray-600 border border-r-0 p-1 border-gray-600 ">3</a>
+        </li>
+        {% for page_num in posts.paginator.page_range %}
+        <li>
+            <a href="?page={{ page_num }}"
+                class="h-10 px-5 {% if page_num == posts.number %} text-white bg-gray-600 {% else %} text-gray-600 bg-white {% endif %} border border-r-0 p-1 border-gray-600 ">
+                {{ page_num }}</a>
+        </li>
+        {% endfor %}
+        <li><a href="?page={{ posts.next_page_number }}"
+                class="h-10 px-5 text-gray-600 bg-white border border-gray-600 p-1 hover:bg-gray-100">Next</a>
+        </li>
+    </ul>
+</div>
+{% endif %}
