@@ -67,7 +67,7 @@ class BlogPage(BlogPageModel):
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
-            [ImageChooserPanel("header_image"), FieldPanel("intro"),FieldPanel("date") ],
+            [ImageChooserPanel("header_image"), FieldPanel("intro") ],
             heading="Blog information",
         ),
         StreamFieldPanel("body"),
