@@ -28,7 +28,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
 RUN pip install cleo tomlkit poetry.core requests cachecontrol cachy html5lib pkginfo virtualenv lockfile
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
-COPY ../poetry.lock ../pyproject.toml .
+COPY poetry.lock pyproject.toml .
 # Install poetry req global
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
@@ -45,7 +45,7 @@ WORKDIR /app
 RUN chown wagtail:wagtail /app
 
 # Copy the source code of the project into the container.
-COPY --chown=wagtail:wagtail srv/project .
+COPY --chown=wagtail:wagtail ./project .
 
 # Use user "wagtail" to run the build commands below and the server itself.
 USER wagtail
