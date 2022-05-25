@@ -3,12 +3,12 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from wagtail.models import Page
 from wagtail.core.fields import StreamField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image
 
 from wagtail.search import index
-
+from .block import BodyBlock
 
 
 class HomePage(Page):
