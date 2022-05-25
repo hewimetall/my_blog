@@ -16,7 +16,6 @@ services:
     networks:
       backend:
         ipv4_address: 172.15.0.2
-    command: ["/bin/sh","./start.sh"]
 
   postgres:
     container_name: cms_pg
