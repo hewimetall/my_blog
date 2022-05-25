@@ -28,7 +28,9 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
 RUN pip install cleo tomlkit poetry.core requests cachecontrol cachy html5lib pkginfo virtualenv lockfile
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
-COPY poetry.lock pyproject.toml .
+COPY ./pyproject.toml .
+COPY ./poetry.lock  .
+
 # Install poetry req global
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
