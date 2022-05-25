@@ -11,14 +11,12 @@ services:
     volumes:
       - media_data:/app/media
       - static:/app/static
+    command: tail -f /dev/null
     depends_on:
       - postgres
-    networks:
-      backend:
-        ipv4_address: 172.15.0.2
 
   postgres:
-    container_name: cms_pg
+    container_name: cms_pg_blog
     image: postgres
     volumes:
       - pg_cms:/var/lib/postgresql/data
@@ -30,18 +28,6 @@ services:
       timeout: 5s
       retries: 5
 
-    networks:
-      backend:
-        ipv4_address: 172.15.0.3
-
-networks:
-  backend:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.15.0.0/24
-          gateway: 172.15.0.1
 
 volumes:
   static:
