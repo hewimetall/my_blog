@@ -12,5 +12,6 @@ class ImageText(StructBlock):
 class BodyBlock(StreamBlock):
     paragraph = RichTextBlock()
     image_text = ImageText()
+    code = CharBlock()
     image_carousel = ListBlock(ImageChooserBlock())
     thumbnail_gallery = ListBlock(ImageChooserBlock())
