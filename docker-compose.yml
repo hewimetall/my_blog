@@ -3,7 +3,7 @@ services:
   app:
     container_name: cms_wagtail
     build:
-      context: srv/project
+      context: srv/
     ports:
       - "80:3000"
     env_file:
