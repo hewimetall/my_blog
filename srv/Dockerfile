@@ -23,6 +23,7 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     libwebp-dev \
     curl \
     python3-cffi\
+    python3-cffi-backend\
  && rm -rf /var/lib/apt/lists/*
 
 # Install poetry.
