@@ -2,7 +2,6 @@ import os
 
 from uuid import uuid4
 SECRET_KEY = os.getenv("SECRET_KEY",str(uuid4()))
-docker- = os.getenv("SECRET_KEY",str(uuid4()))
 
 DATABASES = {
     'default': {
