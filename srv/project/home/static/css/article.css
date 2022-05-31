@@ -1,5 +1,5 @@
 ol, ul {
-    list-style: circle;
-    margin: 8px 0px 0px 19px;
-    padding: 8px;
+    list-style: circle !important;
+    margin: 8px 0px 0px 19px !important;
+    padding: 8px !important;
 }
