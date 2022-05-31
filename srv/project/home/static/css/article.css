@@ -1,7 +1,6 @@
 ol, ul {
-    list-style: circle !important;
-    margin: 8px 0px 0px 19px !important;
-    padding: 8px !important;
+    list-style: inside !important;
+    padding-left: 12px !important;
 }
 h3{
     font-weight: bold !important;
