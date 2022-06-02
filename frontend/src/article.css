@@ -1,0 +1,36 @@
+@import "./main.css";
+
+@layer base {
+
+  h3 {
+    @apply text-center text-xl;
+  }
+
+  blockquote {
+    @apply p-4 bg-clip-border shadow mb-2 bg-rose-200/80;
+  }
+
+  ul {
+    @apply pl-8 list-disc list-inside;
+  }
+
+  ol {
+    @apply pl-8 list-decimal;
+  }
+
+  a {
+    @apply no-underline hover:underline italic;
+  }
+
+  p {
+    @apply indent-4;
+  }
+  pre{
+    @apply max-h-64 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-400 overflow-y-scroll hover:scrollbar-thumb-blue-800 text-sm;
+  }
+}
+@layer components{
+  .toolbar{
+    @apply mr-4 mt-2;
+  }
+}
