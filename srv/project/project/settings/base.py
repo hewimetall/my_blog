@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.cintrib",
+    "wagtail.contrib.settings",
     "wagtail",
     "modelcluster",
     "taggit",
