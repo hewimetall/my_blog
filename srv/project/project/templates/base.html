@@ -26,27 +26,18 @@
     {# Override this in templates to add extra javascript #}
     {% endblock %}
 </head>
-{% endspaceless %}
-
-<body>
-    {% spaceless %}
+    {% endspaceless %}
+<body class="flex flex-col justify-between ">
     {% wagtailuserbar %}
     {% block header %}
-    {% include "snippet/header.html" %}
+    {% include "/header.html" %}
     {% endblock %}
-    {% endspaceless %}
-    {% block content %}
-    <main>
-
-    </main>
-    {% endblock %}
-    <footer class="main-footer">
-        <!— Подвал сайта —>
-        {% block footer %}{% endblock %}
-    </footer>
+  <main class="w-full">
+          {% block content %}
+      {% endblock %}
+  </main>
     {% block first_extra_js %}
     {# Override this in templates to add extra javascript #}
     {% endblock %}
 </body>
-
 </html>
