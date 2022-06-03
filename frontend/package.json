@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "postcss src/main.css -o dist/tailwindcss.css",
-    "dev": "postcss src/main.css -o src/templates/tailwindcss.css",
+    "dev": "postcss src/main.css -o src/templates/css/tailwindcss.css",
     "article": "postcss src/article.css -o src/templates/tailwindcss.css"
   },
   "keywords": [],
