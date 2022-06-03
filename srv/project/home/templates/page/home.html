@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-  <main class="space-y-16 mt-4">
+<main class="w-full flex items-center justify-between p-4 sm:p-12">
     <!— Основное содержимое страницы —>
     {% for page in posts %}
         {% include "snippet/index_article.html" %}
