@@ -1,0 +1,31 @@
+@import "main.css";
+
+
+@layer base {
+    .tags span{
+        @apply bg-l1 p-2 shadow-sm text-xs rounded-xl text-l2 font-bold cursor-default;
+    }
+    .tags span a{
+        @apply  cursor-default;
+    }
+
+    #articles article{
+        @apply flex flex-col rounded-sm shadow-xl m-4 p-3 bg-gray-200 hover:bg-l4 cursor-pointer;
+    }
+
+}
+
+@layer components{
+    body .info{
+        @apply bg-l2 flex flex-col items-center p-2;
+    }
+    .tags{
+        @apply flex flex-row mt-2 mb-2;
+    }
+    #articles{
+        @apply pt-3 pb-2 ;
+    }
+    #articles article h3{
+        @apply font-semibold text-3xl leading-tight truncate;
+    }
+}

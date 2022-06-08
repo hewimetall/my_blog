@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    a{
+        @apply hover:text-purple-400;
+    }
+
+    body header{
+        @apply bg-l2 flex  sticky top-0 w-full;
+    }
+    body header nav{
+        @apply p-3 flex bg-l1 flex-row w-full justify-between;
+    }
+
+    body main{
+        @apply bg-l3 h-full;
+    }
+    body main h2{
+        @apply block text-center font-sans text-2xl p-4;
+    }
+    body footer{
+        @apply bg-l4;
+    }
+
+}
+
+@layer components{
+    body .info{
+        @apply bg-l2;
+    }
+}
