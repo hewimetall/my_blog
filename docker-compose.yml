@@ -1,21 +1,29 @@
-version: "3"
+version: "3.9"
 services:
   app:
-    container_name: cms_wagtail
     build:
       context: srv/
-    ports:
-      - "80:80"
     env_file:
       - .env_docker
     volumes:
-      - media_data:/app/media
+      - media_data:/app/media:delegated,rw
       - static:/app/static
     depends_on:
       - postgres
+      - redis
     deploy:
       mode: replicated
       replicas: 3
+      endpoint_mode: vip
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      # Ignore docker compose use in docker swarm
+      update_config:
+        parallelism: 2
+        delay: 10s
 
   postgres:
     container_name: cms_pg_blog
@@ -30,15 +38,53 @@ services:
       timeout: 5s
       retries: 5
 
-  proxy:
-    image: staticfloat/nginx-certbot
+  redis:
     restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data1
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+  proxy:
+    image: pagespeed/nginx-pagespeed:stable
+    restart: unless-stopped
+    env_file:
+      - .env_docker
     environment:
       CERTBOT_EMAIL: "dertylupos@mail.ru"
+    depends_on:
+      - app
+      - certbot
     ports:
+      - "80:80"
       - "443:443"
     volumes:
-      - ./conf/conf.d:/etc/nginx/user.conf.d:ro
-    links:
-      - "app:django"
+      - ./conf/certbot/conf:/etc/letsencrypt
+      - ./conf/certbot/www:/var/www/certbot
+      - ./conf/conf.d/nginx.conf:/etc/nginx/nginx.conf:ro
+      - media_data:/app/media
+      - static:/app/static
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./conf/certbot/conf:/etc/letsencrypt
+      - ./conf/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  static:
+    driver: local
+  pg_cms:
+  media_data:
+    driver: local
+  redisdata:
