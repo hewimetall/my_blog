@@ -13,6 +13,9 @@ services:
       - static:/app/static
     depends_on:
       - postgres
+    deploy:
+      mode: replicated
+      replicas: 3
 
   postgres:
     container_name: cms_pg_blog
@@ -27,11 +30,15 @@ services:
       timeout: 5s
       retries: 5
 
+  proxy:
+    image: staticfloat/nginx-certbot
+    restart: always
+    environment:
+      CERTBOT_EMAIL: "dertylupos@mail.ru"
+    ports:
+      - "443:443"
+    volumes:
+      - ./conf/conf.d:/etc/nginx/user.conf.d:ro
+    links:
+      - "app:django"
 
-volumes:
-  static:
-    driver: local
-  media:
-    driver: local
-  media_data:
-  pg_cms:
