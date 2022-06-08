@@ -68,7 +68,7 @@ services:
     volumes:
       - ./conf/certbot/conf:/etc/letsencrypt
       - ./conf/certbot/www:/var/www/certbot
-      - ./conf/conf.d/nginx.conf:/etc/nginx/conf.d:ro
+      - ./conf/conf.d/:/etc/nginx/conf.d:ro
       - media_data:/app/media
       - static:/app/static
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
