@@ -52,7 +52,7 @@ services:
         max_attempts: 3
         window: 120s
 
-  proxy:
+  nginx:
     image: pagespeed/nginx-pagespeed:stable
     restart: unless-stopped
     env_file:
