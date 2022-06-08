@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: srv/
+    env_file:
+      - .env_docker
+    volumes:
+      - /www/media:/app/media:delegated,rw
+      - /www/static:/app/static:delegated,rw
+    depends_on:
+      - postgres
+      - redis
+    deploy:
+      mode: replicated
+      replicas: 3
+      endpoint_mode: vip
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      # Ignore docker compose use in docker swarm
+      update_config:
+        parallelism: 2
+        delay: 5s
+
+  postgres:
+    container_name: cms_pg_blog
+    image: postgres
+    volumes:
+      - ./data/pg_cms:/var/lib/postgresql/data:delegated,rw
+    env_file:
+      - .env_docker
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER " ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redisdata:/data1:delegated,rw
