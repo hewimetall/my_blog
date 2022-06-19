@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% load static wagtailcore_tags %}
-    {% block extra_css %}
+{% block global_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+{% endblock %}
+
+{% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/prism_lang.css' %}">
-    <script src="{% static 'js/prism_lang.css' %}">
-    {% endblock %}
+    <script src="{% static 'js/prism_lang.css' %}"></script>
+{% endblock %}
+{% block space_line %}
+{% include %}
+{% endblock %}
 
 {% block content %}
 <main>

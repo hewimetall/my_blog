@@ -425,46 +425,42 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(244 162 97 / var(--tw-bg-opacity));
 }
-    body main article {
-  margin: 8px;
-  display: block;
-  border-radius: 0.5rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  background-color: rgb(255 255 255 / 0.75);
+    .tags span {
+  cursor: default;
+  border-radius: 0.75rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 70 83 / var(--tw-bg-opacity));
   padding: 8px;
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(42 157 143 / var(--tw-text-opacity));
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-    body main article:hover {
+    .tags span a {
+  cursor: default;
+}
+
+    #articles article {
+  margin: 24px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  border-radius: 0.125rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  padding: 16px;
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-    @media (prefers-color-scheme: dark) {
 
-  body main article {
-    --tw-border-opacity: 1;
-    border-color: rgb(55 65 81 / var(--tw-border-opacity));
-    --tw-bg-opacity: 1;
-    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-  }
-
-  body main article:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-  }
-}
-    article ul {
-  list-style-position: inside;
-  list-style-type: disc;
-  padding-left: 8px;
-}
-    article ol {
-  list-style-position: inside;
-  list-style-type: decimal;
-  padding-left: 8px;
+    #articles article:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 162 97 / var(--tw-bg-opacity));
 }
 
 *, ::before, ::after {
@@ -512,8 +508,31 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 body .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   --tw-bg-opacity: 1;
   background-color: rgb(42 157 143 / var(--tw-bg-opacity));
+  padding: 8px;
+}
+.tags {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+}
+#articles {
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+#articles article h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  line-height: 1.25;
 }
 .ml-2 {
   margin-left: 8px;
