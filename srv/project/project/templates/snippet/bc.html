@@ -1,0 +1,16 @@
+{% load wagtailcore_tags %}
+{% spaceless %}
+{% if self.get_ancestors|length > 1 %}
+
+<nav class="rounded-md w-full">
+            <ol class="list-reset flex">
+                {% for page in self.get_ancestors %}
+                    {% if page.is_root == False %}
+                              <li><a href="{% pageurl page %}" class="text-l3 hover:text-l1 text-sm">{{ page.title }}</a></li><li><span class="text-l3  mx-2">/</span></li>
+                    {% endif %}
+                {% endfor  %}
+              <li class="text-white">{{self.title}}</li>
+            </ol>
+</nav>
+{% endif %}
+{% endspaceless %}

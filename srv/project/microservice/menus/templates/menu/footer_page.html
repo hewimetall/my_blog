@@ -1,1 +1,3 @@
-<li><a href="{{ href.get_url }}" class="mr-4 hover:underline md:mr-6">{{ title }}</a></li>
+{% load wagtailcore_tags %}
+
+<li><a href="{% pageurl href %}" class="mr-4 hover:underline md:mr-6">{{ title }}</a></li>

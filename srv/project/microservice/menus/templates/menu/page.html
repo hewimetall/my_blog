@@ -1,1 +1,3 @@
-<a href="{{ href.get_url }}" class=" text-white ml-2 text-sm font-semibold pl-2 cursor-default"> <span>{{ title }}</span></a>
+{% load wagtailcore_tags %}
+
+<a href="{% pageurl href %}" class=" text-white ml-2 text-sm font-semibold pl-2 cursor-default"> <span>{{ title }}</span></a>

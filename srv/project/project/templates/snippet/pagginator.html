@@ -1,0 +1,28 @@
+{% spaceless %}
+{% if posts.paginator.num_pages > 1 %}
+    <div class="container flex justify-center mx-auto">
+      <ul class="flex">
+          {% if posts.has_previous %}
+          <li><a href="?page={{ posts.previous_page_number }}"
+                    class="h-10 px-5 text-gray-600 bg-white border border-r-0 border-gray-600 hover:bg-gray-100">Prev</a>
+            </li>
+          {% endif %}
+            {% for page_num in posts.paginator.page_range %}
+          {% if page_num == posts.number %}
+          <li><a href='?page={{ page_num }}' class="h-10 px-5 text-white bg-gray-600 border border-r-0 border-gray-600 ">
+              {{ page_num }}</a></li>
+          {% else %}
+          <li><a  href='?page={{ page_num }}' class="h-10 px-5 text-white bg-gray-600 border border-r-0 border-gray-600 ">
+              {{ page_num }}</a></li>
+          {% endif %}
+          {% endfor %}
+            {% if posts.has_next %}
+          <li><a href="?page={{ posts.next_page_number }}" class="h-10 px-5 text-gray-600 bg-white border border-gray-600 hover:bg-gray-100">Next</a>
+            </li>
+           {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+    {% endspaceless %}

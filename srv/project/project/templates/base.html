@@ -36,11 +36,9 @@
     {% include "header.html" %}
     {% endblock %}
 
-    <div class="h-4 info">
-        {% block space_line %}
-        
-        {% endblock %}
-    </div>
+    {% block space_line %}
+    <div class="h-4 info"></div>
+    {% endblock %}
 
   <main class="mb-auto">
     {% block content %}
