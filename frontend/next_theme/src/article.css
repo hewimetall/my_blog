@@ -12,3 +12,15 @@
     }
 
 }
+@layer components{
+    .info nav{
+        @apply p-2 rounded-md w-full;
+    }
+    .info nav ol{
+        @apply flex;
+    }
+    .info nav ol li a{
+        @apply text-l3 hover:text-l1 text-sm;
+    }
+
+}
