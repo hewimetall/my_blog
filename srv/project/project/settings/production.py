@@ -10,12 +10,14 @@ ALLOWED_HOSTS = ["*"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'pgdb'),
-        'USER': os.environ.get('POSTGRES_USER', 'irk'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'irk'),
+        'NAME': os.environ.get('POSTGRES_DB', 'local_blog'),
+        'USER': os.environ.get('POSTGRES_USER', 'local_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'local_pass'),
         'HOST': os.environ.get('POSTGRES_NAME', 'localhost'),
     },
 }
+
+WAGTAILADMIN_BASE_URL = "http://netro.fun"
 
 # settings.py
 LOGGING = {
@@ -31,3 +33,5 @@ LOGGING = {
         'level': 'WARNING',
     },
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

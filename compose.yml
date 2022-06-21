@@ -6,9 +6,9 @@ services:
     env_file:
       - .env_docker
     volumes:
-      - ./srv/project:/app:delegated,rw
-      - /www/media:/app/media:delegated,rw
-      - /www/static:/app/static:delegated,rw
+      - ./srv/project:/app:ro
+      - /www/media:/media:delegated,rw
+      - /www/static:/static:delegated,rw
     depends_on:
       - postgres
 
@@ -27,13 +27,11 @@ services:
 
   nginx_simple:
     image: nginx:stable
-    restart: unless-stopped
     volumes:
       - ./conf/conf.d/simple.conf:/etc/nginx/nginx.conf:ro
       - /www/media:/media:ro
       - /www/static:/static:ro
     ports:
       - "80:80"
-      - "443:443"
     depends_on:
       - app
