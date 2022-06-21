@@ -90,8 +90,6 @@ class BlogPageModel(Page):
 
 class BlogPage(BlogPageModel):
 
-    parent_page_types = ["home.HomePage"]
-
     template = 'page/article.html'
 
     content_panels = Page.content_panels + [
