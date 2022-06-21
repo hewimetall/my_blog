@@ -1,6 +1,11 @@
 from .base import *
+from uuid import uuid4
+SECRET_KEY = os.getenv("SECRET_KEY", str(uuid4()))
 
 DEBUG = False
+
+# SECURITY WARNING: define the correct hosts in production!
+ALLOWED_HOSTS = ["*"]
 
 DATABASES = {
     'default': {
@@ -23,11 +28,6 @@ LOGGING = {
     },
     'root': {
         'handlers': ['console'],
-        'level': 'DEBUG',
+        'level': 'WARNING',
     },
 }
-
-try:
-    from .local import *
-except ImportError:
-    pass
