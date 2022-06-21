@@ -11,19 +11,19 @@ services:
     depends_on:
       - postgres
       - redis
-    deploy:
-      mode: replicated
-      replicas: 3
-      endpoint_mode: vip
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-      # Ignore docker compose use in docker swarm
-      update_config:
-        parallelism: 2
-        delay: 5s
+#    deploy:
+#      mode: replicated
+#      replicas: 0
+#      endpoint_mode: vip
+#      restart_policy:
+#        condition: on-failure
+#        delay: 5s
+#        max_attempts: 3
+#        window: 120s
+#      # Ignore docker compose use in docker swarm
+#      update_config:
+#        parallelism: 2
+#        delay: 5s
 
   postgres:
     container_name: cms_pg_blog
