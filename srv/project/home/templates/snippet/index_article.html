@@ -1,9 +1,11 @@
 {% spaceless %}
 <article class="w-full" onclick="window.open('{{ page.get_url }}','blank')">
     <h3>{{page.title}}</h3>
+    {% if page.intro %}
         <p class="mt-2">
             {{ page.intro }}
         </p>
+    {% endif %}
         <p class="text-sm text-gray-700 tracking-wide font-semibold mt-2">
           <a class="cursor-default hover:text-purple-400" href="{{page.get_parent.get_url}}">{{ page.get_parent }}</a> &bull;{{ page.last_published_at}}
         </p>
