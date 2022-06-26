@@ -16,7 +16,7 @@
     }
 
     body main{
-        @apply bg-l3 h-full;
+        @apply bg-l3 ;
     }
     body main h2{
         @apply block text-center font-sans text-2xl p-4;

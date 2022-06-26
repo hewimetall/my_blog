@@ -409,7 +409,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
     body main {
-  height: 100%;
   --tw-bg-opacity: 1;
   background-color: rgb(233 196 106 / var(--tw-bg-opacity));
 }
