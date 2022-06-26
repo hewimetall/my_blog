@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block global_css %}
+    {# Override this in templates to add extra stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+    {% block space_line %}
+    <div class="h-1 info">
+        {% include 'snippet/bc.html' %}
+            <h2 class="block font-serif text-2xl xl:text-5xl">{{page.title}}</h2>
+    </div>
+    {% endblock %}
+
+{% block content %}
+    <!— Основное содержимое страницы —>
+        <div id='articles' class="">
+    {% for page in posts %}
+        {% include "snippet/index_article.html" %}
+    {% endfor %}
+</div>
+        {% include "snippet/pagginator.html" %}
+{% endblock %}

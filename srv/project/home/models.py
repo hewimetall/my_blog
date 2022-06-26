@@ -40,7 +40,7 @@ class HomePage(Page):
 
 
 class CategoryPage(Page):
-    template = 'page/home.html'
+    template = 'page/index.html'
 
     def get_context(self, request, *args, **kwargs):
         """Adding custom stuff to our context."""
