@@ -532,6 +532,9 @@ body .info {
   --tw-text-opacity: 1;
   color: rgb(38 70 83 / var(--tw-text-opacity));
 }
+.m-2 {
+  margin: 8px;
+}
 .mx-2 {
   margin-left: 8px;
   margin-right: 8px;
@@ -544,6 +547,9 @@ body .info {
 }
 .mb-auto {
   margin-bottom: auto;
+}
+.mr-2 {
+  margin-right: 8px;
 }
 .mt-auto {
   margin-top: auto;
