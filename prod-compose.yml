@@ -38,7 +38,7 @@ services:
       - cert-static:/var/www/html
     depends_on:
       - webservice
-    command: ["certonly", "--webroot", "--webroot-path=/var/www/html", "-m dertylupos@mail.ru", "--agree-tos", "--no-eff-email", "--staging", "-d netro.fun", "-d www.netro.fun"]
+    command: ["certonly", "--webroot", "--webroot-path=/var/www/html", "-m dertylupos@mail.ru", "--agree-tos", "--no-eff-email", "--force-renewal", "-d netro.fun", "-d www.netro.fun"]
     networks:
       - app-network
 
