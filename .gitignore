@@ -19,3 +19,4 @@ data/
 .env_docker
 db.sqlite3
 init-letsencrypt.sh
+dhparam/
