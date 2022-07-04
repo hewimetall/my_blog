@@ -5,10 +5,10 @@ services:
       context: srv/
     env_file:
       - .env_docker
+    ports:
+      - "80:80"
     volumes:
       - ./srv/project:/app:ro
-      - /www/media:/media:delegated,rw
-      - /www/static:/static:delegated,rw
     depends_on:
       - postgres
 
@@ -24,14 +24,3 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
-  nginx_simple:
-    image: nginx:stable
-    volumes:
-      - ./conf/conf.d/simple.conf:/etc/nginx/nginx.conf:ro
-      - /www/media:/media:ro
-      - /www/static:/static:ro
-    ports:
-      - "80:80"
-    depends_on:
-      - app

@@ -18,3 +18,4 @@ conf/certbot
 data/
 .env_docker
 db.sqlite3
+init-letsencrypt.sh

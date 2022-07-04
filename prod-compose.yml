@@ -1,0 +1,78 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: srv/
+    env_file:
+      - .env_docker
+    volumes:
+      - ./srv/project:/app:ro
+      - /www/media:/media:delegated,rw
+      - /www/static:/static:delegated,rw
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  postgres:
+    container_name: cms_pg_blog
+    image: postgres
+    volumes:
+      - ./data/pg_cms:/var/lib/postgresql/data:delegated,rw
+    env_file:
+      - .env_docker
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER " ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - cert-static:/var/www/html
+    env_file:
+      - .env_docker
+    depends_on:
+      - webservice
+    command: certonly --webroot --webroot-path=/var/www/html --email $CERTBOT_EMAIL --agree-tos --no-eff-email --staging -d $HOST_NAME  -d www.$HOST_NAME
+    networks:
+      - app-network
+
+  webservice:
+    image: nginx:stable
+    container_name: webservice
+    restart: unless-stopped
+    volumes:
+      - ./conf/conf.d:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - cert-static:/var/www/html
+      - /www/media:/media:ro
+      - /www/static:/static:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+volumes:
+  certbot-etc:
+  certbot-var:
+  cert-static:
+    driver: local
+    driver_opts:
+      type: none
+      device: /cert_static
+      o: bind
+
+networks:
+  app-network:
+    driver: bridge
