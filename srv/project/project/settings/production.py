@@ -3,6 +3,7 @@ from uuid import uuid4
 SECRET_KEY = os.getenv("SECRET_KEY", str(uuid4()))
 
 DEBUG = False
+CSRF_TRUSTED_ORIGINS = ["https://www.netro.fun","https://netro.fun/"]
 
 # SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = ["*"]
@@ -17,7 +18,7 @@ DATABASES = {
     },
 }
 
-WAGTAILADMIN_BASE_URL = "http://netro.fun"
+WAGTAILADMIN_BASE_URL = "https://www.netro.fun"
 
 # settings.py
 LOGGING = {
