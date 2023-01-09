@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  client:
+    build:
+      context: frontend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - date:/code/dist:rw
+
+  server:
+    build:
+      context: srv/
+    env_file:
+      - .env_docker
+    ports:
+      - "8000:8000"
+    volumes:
+      - date:/code/project/static:rw
+    depends_on:
+      - postgres
+      - client
+
+  postgres:
+    container_name: cms_pg_blog
+    image: postgres
+    volumes:
+      - pg_date:/var/lib/postgresql/data
+    env_file:
+      - .env_docker
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER " ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volume:
+  - data:
+  - pg_date:
